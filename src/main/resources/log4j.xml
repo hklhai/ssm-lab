@@ -18,13 +18,12 @@
 		</layout>
 	</appender>
 
-
 	<logger
 		name="org.springframework.data.mongodb.core.convert.CustomConversions">
 		<level value="ERROR" />
 	</logger>
 	<logger name="org.springframework">
-		<level value="WARN" />
+		<level value="DEBUG" />
 	</logger>
 	<logger name="org.apache.cxf">
 		<level value="WARN" />
