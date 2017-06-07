@@ -20,6 +20,20 @@
         <log4j.version>1.2.14</log4j.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>abbRelease</id>
+            <name>Abb Project Release</name>
+            <url>http://127.0.0.1:8081/nexus/content/repositories/abbRel/</url>
+        </repository>
+        <snapshotRepository>
+            <id>abbSnapshot</id>
+            <name>Abb Project Snapshot</name>
+            <url>http://127.0.0.1:8081/nexus/content/repositories/abbSnap/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
     <repositories>
         <repository>
             <id>central</id>
