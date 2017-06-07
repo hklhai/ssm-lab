@@ -14,6 +14,7 @@ public class GenTable {
 
     private String SCHEMA = "hk";
 
+
     @Test
     public void test() {
         File file = new File("src/test/resources/table.info");
@@ -24,7 +25,9 @@ public class GenTable {
 
             String tabName = split[i];
             String s1 = tabName.split("_")[1];
-            String objName = s1.substring(0, 1).toUpperCase() + s1.substring(1)+"Obj";
+            String name =s1.substring(0, 1).toUpperCase()+s1.substring(1);
+            String objName = name+"Obj";
+            String daoName = name+"Dao";
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("<table schema=\"");
@@ -32,7 +35,11 @@ public class GenTable {
             stringBuilder.append("\" tableName=\"");
             stringBuilder.append(tabName);
             stringBuilder.append("\" domainObjectName=\"");
-            stringBuilder.append(objName);//yy
+            stringBuilder.append(objName);//实体类
+            stringBuilder.append("\" mapperName=\"");
+            stringBuilder.append(daoName);
+            stringBuilder.append("\" sqlProviderName=\"");
+            stringBuilder.append(daoName);
             stringBuilder.append("\" enableCountByExample=\"false\" enableUpdateByExample=\"false\"\n" +
                     "    enableDeleteByExample=\"false\" enableSelectByExample=\"false\" selectByExampleQueryId=\"false\"></table>");
             System.out.println(stringBuilder.toString());

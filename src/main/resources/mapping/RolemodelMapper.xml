@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ncut.dao.RolemodelDao">
+  <resultMap id="BaseResultMap" type="cn.edu.ncut.model.RolemodelObj">
+    <id column="rolemodelid" jdbcType="INTEGER" property="rolemodelid" />
+    <result column="roleid" jdbcType="INTEGER" property="roleid" />
+    <result column="modelid" jdbcType="INTEGER" property="modelid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rolemodelid, roleid, modelid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lab_rolemodel
+    where rolemodelid = #{rolemodelid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lab_rolemodel
+    where rolemodelid = #{rolemodelid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.ncut.model.RolemodelObj">
+    insert into lab_rolemodel (rolemodelid, roleid, modelid
+      )
+    values (#{rolemodelid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{modelid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.ncut.model.RolemodelObj">
+    insert into lab_rolemodel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolemodelid != null">
+        rolemodelid,
+      </if>
+      <if test="roleid != null">
+        roleid,
+      </if>
+      <if test="modelid != null">
+        modelid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolemodelid != null">
+        #{rolemodelid,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="modelid != null">
+        #{modelid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.ncut.model.RolemodelObj">
+    update lab_rolemodel
+    <set>
+      <if test="roleid != null">
+        roleid = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="modelid != null">
+        modelid = #{modelid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rolemodelid = #{rolemodelid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.ncut.model.RolemodelObj">
+    update lab_rolemodel
+    set roleid = #{roleid,jdbcType=INTEGER},
+      modelid = #{modelid,jdbcType=INTEGER}
+    where rolemodelid = #{rolemodelid,jdbcType=INTEGER}
+  </update>
+</mapper>
